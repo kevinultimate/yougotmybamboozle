@@ -1,0 +1,126 @@
+﻿@using EWBOK_Final_Project.Common;
+@using Model.EF;
+@{
+    if (Session[Constants.USER_INFO] != null)
+    {
+        var userinfo = (User)Session[Constants.USER_INFO];
+        Session[Constants.WEBSITE_COLOR] = userinfo.ColorWebsite.ToString();
+    }
+}
+    <html lang="en">
+    <!-- Basic -->
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <!-- Mobile Metas -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Site Metas -->
+        <title>ThewayShop - Ecommerce Bootstrap 4 HTML Template</title>
+        <meta name="keywords" content="">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <!-- Site Icons -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" rel="stylesheet" />
+        <link rel="shortcut icon" href="~/Content/client/img/favicon.ico" type="image/x-icon">
+        <link rel="apple-touch-icon" href="~/Content/client/img/apple-touch-icon.png">
+        <link href="~/Content/client/css/superslides.css" rel="stylesheet" />
+        <link href="~/Content/client/css/style.css" rel="stylesheet" />
+        <link href="~/Content/client/css/responsive.css" rel="stylesheet" />
+        <link href="~/Content/client/css/owl.carousel.min.css" rel="stylesheet" />
+        <link href="~/Content/client/css/jquery-ui.css" rel="stylesheet" />
+        <link href="~/Content/client/css/custom.css" rel="stylesheet" />
+        <link href="~/Content/client/css/code_animate.css" rel="stylesheet" />
+        <link href="~/Content/client/css/carousel-ticker.css" rel="stylesheet" />
+        <link href="~/Content/client/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="~/Content/client/css/bootstrap-select.css" rel="stylesheet" />
+        <link href="~/Content/client/css/bootsnav.css" rel="stylesheet" />
+        <link href="~/Content/client/css/baguetteBox.min.css" rel="stylesheet" />
+        <link href="~/Content/client/css/all.css" rel="stylesheet" />
+
+        <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+        <!--===============================================================================================-->
+        <!--===============================================================================================-->
+        <link href="~/ContactCss/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+        <!--===============================================================================================-->
+        <link href="~/ContactCss/fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+        <!--===============================================================================================-->
+        <link href="~/ContactCss/fonts/Linearicons-Free-v1.0.0/icon-font.min.css" rel="stylesheet" />
+        <!--===============================================================================================-->
+        <link href="~/ContactCss/fonts/iconic/css/material-design-iconic-font.min.css" rel="stylesheet" />
+        <!--===============================================================================================-->
+        <link href="~/ContactCss/vendor/animate/animate.css" rel="stylesheet" />
+        <!--===============================================================================================-->
+        <link href="~/ContactCss/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" />
+        <!--===============================================================================================-->
+        <link href="~/ContactCss/vendor/animsition/css/animsition.min.css" rel="stylesheet" />
+        <!--===============================================================================================-->
+        <link href="~/ContactCss/vendor/select2/select2.min.css" rel="stylesheet" />
+        <!--===============================================================================================-->
+        <link href="~/ContactCss/vendor/daterangepicker/daterangepicker.css" rel="stylesheet" />
+        <!--===============================================================================================-->
+        <link href="~/ContactCss/css/util.css" rel="stylesheet" />
+        <link href="~/ContactCss/css/main.css" rel="stylesheet" />
+        <!--GOOGLE SIGN IN-->
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <meta name="google-signin-client_id" content="223341147701-9n4304951dk10deq80a9vplndcfd16h2.apps.googleusercontent.com">
+        <link href="~/LoginCss/style.css" rel="stylesheet" />
+
+        <link href="~/LoginCss/red-theme.css" rel="stylesheet" />
+    </head>
+
+    <body>
+
+        @{Html.RenderPartial("Partial_Header", "Home"); }
+
+        @RenderBody()
+
+        @{ Html.RenderAction("Partial_Footer", "Home");}
+
+        <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
+        <!-- ALL JS FILES -->
+        <script src="~/Content/client/js/bootstrap.min.js"></script>
+        <script src="~/Content/client/js/popper.min.js"></script>
+        <script src="~/Content/client/js/jquery-3.2.1.min.js"></script>
+        <!-- ALL PLUGINS -->
+        <script src="~/Content/client/js/jquery.superslides.min.js"></script>
+        <script src="~/Content/client/js/bootstrap-select.js"></script>
+        <script src="~/Content/client/js/inewsticker.js"></script>
+        <script src="~/Content/client/js/bootsnav.js"></script>
+        <script src="~/Content/client/js/images-loded.min.js"></script>
+        <script src="~/Content/client/js/isotope.min.js"></script>
+        <script src="~/Content/client/js/owl.carousel.min.js"></script>
+        <script src="~/Content/client/js/baguetteBox.min.js"></script>
+        <script src="~/Content/client/js/form-validator.min.js"></script>
+        <script src="~/Content/client/js/contact-form-script.js"></script>
+        <script src="~/Content/client/js/custom.js"></script>
+        <script src="~/Content/client/js/jquery-ui.js"></script>
+        <script src="~/Content/client/js/jquery.nicescroll.min.js"></script>
+        <!--===============================================================================================-->
+        <script src="~/ContactCss/vendor/jquery/jquery-3.2.1.min.js"></script>
+        <!--===============================================================================================-->
+        <script src="~/ContactCss/vendor/animsition/js/animsition.min.js"></script>
+        <!--===============================================================================================-->
+        <script src="~/ContactCss/vendor/bootstrap/js/popper.js"></script>
+        <script src="~/ContactCss/vendor/bootstrap/js/bootstrap.min.js"></script>
+        <!--===============================================================================================-->
+        <link href="~/ContactCss/vendor/select2/select2.min.css" rel="stylesheet" />
+        <!--===============================================================================================-->
+        <script src="~/ContactCss/vendor/daterangepicker/daterangepicker.js"></script>
+        <script src="~/ContactCss/vendor/daterangepicker/moment.min.js"></script>
+        <script src="vendor/countdowntime/countdowntime.js"></script>
+        <script src="~/ContactCss/vendor/countdowntime/countdowntime.js"></script>
+        <!--===============================================================================================-->
+
+        <script src="~/ContactCss/js/map-custom.js"></script>
+        <script src="~/ContactCss/js/main.js"></script>
+        <!--===============================================================================================-->
+    </body>
+
+    </html>

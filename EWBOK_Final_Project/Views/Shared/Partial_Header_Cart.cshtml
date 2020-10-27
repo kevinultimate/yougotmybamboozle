@@ -1,0 +1,34 @@
+﻿@model List<EWBOK_Final_Project.Models.CartItem>
+@{ decimal? total = 0;}
+<ul class="cart-list">
+    @if (Model.Count() > 0)
+    {
+        for (int i = 0; i < Model.Count; i++)
+        {
+            <li>
+                <a href="#" class="photo"><img src="~/Data/ImgProduct/@Model[i].Product.Image" class="cart-thumb" alt="" /></a>
+                <h6><a href="#">@Model[i].Product.Name </a></h6>
+                @if (Model[i].Product.ProductStatus > 0)
+                {
+                    <p>@Model[i].Quantity x - <span class="price">@Model[i].Product.PromotionPrice đ</span></p>
+                    total = total + (Model[i].Product.PromotionPrice * Model[i].Quantity);
+                }
+                else
+                {
+                    <p>@Model[i].Quantity x - <span class="price">@Model[i].Product.Price đ</span></p>
+                    total = total + (Model[i].Product.Price * Model[i].Quantity);
+                }
+
+            </li>
+
+        }
+        <li class="total">
+            <a href="/Cart/Index" class="btn btn-default hvr-hover btn-cart">Xem</a>
+            <span class="float-right"><strong>Tổng tiền</strong>: @total đ</span>
+        </li>
+    }
+    else
+    {
+        <li>Không có sản phẩm trong giỏ hàng</li>
+    }
+</ul>

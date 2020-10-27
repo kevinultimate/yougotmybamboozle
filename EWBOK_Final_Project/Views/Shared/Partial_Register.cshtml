@@ -1,0 +1,32 @@
+﻿<div class="modal fade" id="Register-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4>Đăng ký</h4>
+                <form class="aa-login-form" action="@Url.Action("Register","Login")" method="post" enctype="multipart/form-data">
+                    <label for="">Họ tên:<span>*</span></label>
+                    <input type="text" name="Name" placeholder="Họ Tên">
+                    <label for="">Địa chỉ:<span>*</span></label>
+                    <input type="text" name="Address" placeholder="Địa chỉ">
+                    <label for="">Điện thoại:<span>*</span></label>
+                    <input type="text" name="Phone" placeholder="Điện thoại">
+                    <label for="">Email:<span>*</span></label>
+                    <input type="text" name="Email" placeholder="Email">
+                    <label for="">Tên tài khoản:<span>*</span></label>
+                    <input type="text" name="Username" placeholder="Tên tài khoản">
+                    <label for="">Mật khẩu:<span>*</span></label>
+                    <input type="password" name="PassWord" id="password" placeholder="Mật khẩu">
+                    <label for="">Xác nhận mật khẩu:<span>*</span></label>
+                    <input type="password" name="PassWord" id="password" placeholder="Mật khẩu">
+                    <button class="aa-browse-btn" type="submit">Đăng ký</button>
+                    <label for="rememberme" class="rememberme"></label>
+                    <p class="aa-lost-password"><a href="#"><br /></a></p>
+                    <div class="aa-register-now">
+                        Bạn đã có tài khoản?<a href="" data-toggle="modal" data-dismiss="modal" data-target="#login-modal">Đăng nhập ngay!</a>
+                    </div>
+                </form>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

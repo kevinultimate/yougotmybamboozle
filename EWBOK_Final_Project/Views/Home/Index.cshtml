@@ -1,0 +1,179 @@
+﻿@using Model.EF
+@using EWBOK_Final_Project.Common
+@{
+    var listnew = (List<Product>)ViewBag.NewProduct;
+    var listview = (List<Product>)ViewBag.BestViewProduct;
+    var listdiscount = (List<Product>)ViewBag.DiscountProduct;
+    var listseller = (List<Product>)ViewBag.BestSellerProduct;
+    var listwish = (List<Product>)ViewBag.WishProduct;
+    List<Product> listmodal = listnew.Concat(listview).Concat(listdiscount).Concat(listseller).Concat(listwish).ToList();
+    ProductComparer productComparer = new ProductComparer();
+    listmodal = listmodal.Distinct(productComparer).ToList();
+    ViewBag.Title = "Home Page";
+}
+@{Html.RenderAction("Partial_Slide", "Home"); }
+<br />
+<br />
+<br />
+<br />
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="text-align:center">
+    <h1>Danh Mục Các Loại Sách</h1>
+    <p>Hãy chọn cho mình một chủ đề và lấy những quyển sách ưa thích nhé</p>
+</div>
+<!-- Start Categories  -->
+<div class="categories-shop">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                <div class="shop-cat-box">
+                    <img class="img-fluid" src="~/Content/Client/images/SachKinhThe.jpg" alt="" />
+                    <a class="btn hvr-hover" href="#">Sách Kinh Tế</a>
+                </div>
+                <div class="shop-cat-box">
+                    <img class="img-fluid" src="~/Content/Client/images/SachKhoaHoc.jpg" alt="" />
+                    <a class="btn hvr-hover" href="#">Sách Khoa Học</a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                <div class="shop-cat-box">
+                    <img class="img-fluid" src="~/Content/Client/images/SachVanHoc.jpg" alt="" />
+                    <a class="btn hvr-hover" href="#">Sách Văn Học Trong Nước</a>
+                </div>
+                <div class="shop-cat-box">
+                    <img class="img-fluid" src="~/Content/Client/images/SachDoiSong.jpg" alt="" />
+                    <a class="btn hvr-hover" href="#">Sách Đời Sống</a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                <div class="shop-cat-box">
+                    <img class="img-fluid" src="~/Content/Client/images/SachThieuNhi.jpg" alt="" />
+                    <a class="btn hvr-hover" href="#">Sách Thiếu Nhi</a>
+                </div>
+                <div class="shop-cat-box">
+                    <img class="img-fluid" src="~/Content/Client/images/SachVanHocNN.jpg" alt="" />
+                    <a class="btn hvr-hover" href="#">Sách Văn Học Nước Ngoài</a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                <div class="shop-cat-box">
+                    <img class="img-fluid" src="~/Content/Client/images/SachGKTK.jpg" alt="" />
+                    <a class="btn hvr-hover" href="#">Sách Giáo Khoa-Tham Khảo</a>
+                </div>
+                <div class="shop-cat-box">
+                    <img class="img-fluid" src="~/Content/Client/images/SachNNTH.jpg" alt="" />
+                    <a class="btn hvr-hover" href="#">Sách Ngoại Ngữ-Tin Học</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Categories -->
+<!-- Start Products  -->
+<div class="products-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="title-all text-center">
+                    <h1>Khuyến Mãi Hè 2020</h1>
+                    <p>Hãy sắm cho mình 1 quyển sách về đọc thư giãn sau một ngày mệ mõi</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="special-menu text-center">
+                    <div class="button-group filter-button-group">
+                        <button class="active" data-filter="*">Tất cả sách</button>
+                        <button data-filter=".top-featured">Sách mới</button>
+                        <button data-filter=".best-seller">Sách ưa chuộng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row special-list">
+            @for (int i = 0; i < listnew.Count(); i++)
+            {
+                var link = "/" + listnew[i].MetaTitle.ToString() + "-" + listnew[i].ID;
+                <div class="col-lg-3 col-md-3 special-grid best-seller">
+                    <div class="products-single fix">
+                        <div class="box-img-hover">
+                            <div class="type-lb">
+                                <p class="sale">Sale</p>
+                            </div>
+                            <img src="~/Data/ImgProduct/@listnew[i].Image" style="height:400px" class="img-fluid" alt="Image">
+                            <div class="mask-icon">
+                                <ul>
+                                    <li><a href="@link" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
+
+                                    <li><a href="/them-vao-yeu-thich-@listnew[i].ID" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+                                </ul>
+                                <a class="cart" href="/them-vao-gio-@listnew[i].ID">Thêm vào giỏ</a>
+                            </div>
+                        </div>
+                        <div class="why-text">
+                            @if (listnew[i].Name.Count() >= 20)
+                            {
+                                <h2>@listnew[i].Name.ToString().Substring(0, 20) ...</h2>
+                            }
+                            else
+                            {
+                                <h2>@listnew[i].Name.ToString()</h2>
+                            }
+                            @if (listnew[i].ProductStatus > 0)
+                            {
+                                <h2>Giá @listnew[i].PromotionPrice đ | Gốc @listnew[i].Price đ</h2>
+
+                            }
+                            else
+                            {
+                        <h2>Giá @listnew[i].Price đ</h2>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+            @for (int i = 0; i < listview.Count(); i++)
+            {
+                var link = "/" + listview[i].MetaTitle + "-" + listview[i].ID;
+                <div class="col-lg-3 col-md-3 special-grid top-featured">
+                    <div class="products-single fix">
+                        <div class="box-img-hover">
+                            <div class="type-lb">
+                                <p class="new">New</p>
+                            </div>
+                            <img src="~/Data/ImgProduct/@listview[i].Image" style="height:400px" class="img-fluid" alt="Image">
+                            <div class="mask-icon">
+                                <ul>
+                                    <li><a href="@link" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
+                                    <li><a href="/them-vao-yeu-thich-@listview[i].ID" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+                                </ul>
+                                <a class="cart" href="/them-vao-gio-@listview[i].ID">Thêm vào giỏ</a>
+                            </div>
+                        </div>
+                        <div class="why-text">
+                            @if (listview[i].Name.Count() >= 20)
+                            {
+                                <h4>@listview[i].Name.ToString().Substring(0, 20) ...</h4>
+                            }
+                            else
+                            {
+                                <h4>@listview[i].Name.ToString()</h4>
+                            }
+                            @if (listview[i].ProductStatus > 0)
+                            {
+                        <h5>Giá @listview[i].PromotionPrice đ | Gốc @listview[i].Price đ</h5>
+                            }
+                            else
+                            {
+                        <h5>Giá @listview[i].Price đ</h5>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<!-- End Products -->
+@{Html.RenderAction("Partial_Testimonial", "Home"); }

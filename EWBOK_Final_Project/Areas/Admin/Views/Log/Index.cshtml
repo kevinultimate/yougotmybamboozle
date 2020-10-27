@@ -1,0 +1,52 @@
+﻿@model List<Model.EF.Log>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-2 text-gray-800">
+        Log
+    </h1>
+</div>
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3 bg-light border-bottom-0">
+        <h6 class="m-0 font-weight-bold text-primary">Log Information</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>UserID</th>
+                        <th>Create Date</th>
+                        <th>Message</th>
+                        <th>Exception</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>UserID</th>
+                        <th>Create Date</th>
+                        <th>Message</th>
+                        <th>Exception</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.UserID</td>
+                            <td>@item.CreateDate</td>
+                            <td>@item.Message</td>
+                            <td>@item.Exception</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,83 @@
+﻿@model Model.EF.Feedback
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var about = (Model.EF.About)ViewBag.About;
+}
+<!--
+    f=q: hiển thị dưới dạng q( layout google map bình thường ), d(direction),  l (for local).
+    q=location+goes+here ( điểm đến )
+    saddr=  : (star address)set điểm đến khi tìm kiếm
+    daddr=  : (direction address) set điểm đến
+    origin= : điểm bắt đầu được set
+    destination= điểm đến
+    155+S%C6%B0+V%E1%BA%A1n+H%E1%BA%A1nh%2C+Ph%C6%B0%E1%BB%9Dng+12%2C+Qu%E1%BA%ADn+10%2C+H%E1%BB%93+Ch%C3%AD+Minh
+            https://www.google.com/maps/embed/v1/directions?key=
+-->
+<div class="container-contact100">
+    <div class="contact100-map">
+        <!-- <form method="get" action="https://www.google.com/maps" target="mapframe">
+            <input class="form-group" name="saddr" type="text" value="@ViewBag.location" id="saddr">
+        <input name="output" type="hidden" value="embed">
+        <input name="f" type="hidden" value="d">
+        <input name="z" type="hidden" value="11">
+        <input name="daddr" type="hidden" id="daddr"
+               value="155 Sư Vạn Hạnh, Phường 12, Quận 10, Hồ Chí Minh">
+        <input type="submit" name="Submit" value="Submit">
+    </form>-->
+        <iframe name="mapframe" width="100%" height="96%"
+                src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyC_U26WHYPwlVBrXBxcqdUoanUCOv9SAIA&origin= &destination=155+S%C6%B0+V%E1%BA%A1n+H%E1%BA%A1nh%2C+Ph%C6%B0%E1%BB%9Dng+12%2C+Qu%E1%BA%ADn+10%2C+H%E1%BB%93+Ch%C3%AD+Minh">
+        </iframe>
+    </div>
+    <div class="wrap-contact100">
+        <form class="contact100-form validate-form" action="@Url.Action("Feedback","Contact")" method="post">
+            <span class="contact100-form-title">
+                <h2>EWBOK - Bookstore</h2>
+                <p>Cửa hàng luôn đón nhận những phản hồi từ bạn</p>
+            </span>
+
+            <div class="wrap-input100 validate-input" data-validate="Name is required">
+                <span class="label-input100">Họ tên</span>
+                @Html.ValidationMessageFor(x => x.Name, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(x => x.Name, "", new { @class = "form-control", placeholder = "Tên" })
+                <span class="focus-input100"></span>
+            </div>
+
+            <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                <span class="label-input100">Email</span>
+                @Html.ValidationMessageFor(x => x.Email, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(x => x.Email, "", new { @class = "form-control", placeholder = "Email" })
+                <span class="focus-input100"></span>
+            </div>
+
+            <div class="wrap-input100">
+                <span class="label-input100">Số điện thoại</span>
+                @Html.ValidationMessageFor(x => x.Phone, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(x => x.Phone, "", new { @class = "form-control", placeholder = "Số điện thoại" })
+                <span class="focus-input100"></span>
+            </div>
+            <div class="wrap-input100">
+                <span class="label-input100">Địa chỉ</span>
+                @Html.ValidationMessageFor(x => x.Address, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(x => x.Address, "", new { @class = "form-control", placeholder = "Địa chỉ" })
+                <span class="focus-input100"></span>
+            </div>
+
+            <div class="wrap-input100 validate-input" data-validate="Message is required">
+                <span class="label-input100">Message</span>
+                @Html.ValidationMessageFor(x => x.Content, "", new { @class = "text-danger" })
+                @Html.TextAreaFor(x => x.Content, 3, 0, new { @class = "form-control", placeholder = "Nội dung" })
+                <span class="focus-input100"></span>
+            </div>
+
+            <div class="container-contact100-form-btn">
+                <div class="wrap-contact100-form-btn">
+                    <div class="contact100-form-bgbtn"></div>
+                    <button class="contact100-form-btn">
+                        Gửi
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
